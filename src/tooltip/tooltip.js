@@ -12,7 +12,7 @@ angular.module( 'ui.bootstrap.tooltip', [] )
     templateUrl: 'template/tooltip/tooltip-popup.html'
   };
 })
-.directive( 'tooltip', [ '$compile', '$timeout', '$parse', '$window', function ( $compile, $timeout, $parse, $window) {
+.directive( 'tooltip', [ '$compile', '$timeout', '$parse', '$window', '$document', function ( $compile, $timeout, $parse, $window, $document) {
   
   var template = 
     '<tooltip-popup '+
@@ -79,7 +79,7 @@ angular.module( 'ui.bootstrap.tooltip', [] )
         
         // Now we add it to the DOM because need some info about it. But it's not 
         // visible yet anyway.
-        element.after( tooltip );
+        $document.find( 'body' ).append( tooltip );
         
         // Get the position of the directive element.
         position = getPosition();
